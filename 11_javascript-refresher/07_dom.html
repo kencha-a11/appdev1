@@ -1,0 +1,30 @@
+<!-- 07_dom.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Javascript Refresher</title>
+</head>
+
+<body>
+
+    <button onclick="changeBackground()">Click Me</button>
+
+    <p id="colorText"></p>
+    <p id="delayedMessage"></p>
+
+    <script>
+        function changeBackground() {
+            let color = prompt("What is your favorite color?");
+            document.body.style.backgroundColor = color;
+            document.getElementById("colorText").innerText = "Your favorite color is: " + color;
+
+            setTimeout(function () {
+                document.getElementById("delayedMessage").innerText = "This message appears after 2 seconds";
+            }, 2000);
+        }
+    </script>
+
+</body>
+
+</html>
