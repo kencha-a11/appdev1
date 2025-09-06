@@ -1,2 +1,10 @@
 Line 1
 Line 2
+
+What did you notice about the file and commit history after reset?
+
+since i have 3 Line 1, 2, 3 commits it has 3 id hash address 
+my heads points to the latest commit
+and when I use the git reset --hard <commit-id>
+the record step to previous commit that points to the target commit-id
+and the latest commit Line 3 was remove in record
