@@ -1,0 +1,5 @@
+Realization: What did you notice about the commit history after rebase?
+
+i realize that when we have a branch aside from main branch
+any new commits in branch does not align with the commit made in main branch have distinct separation
+when git rebase main command does is any new commits in main insert to commits to sub branch 
