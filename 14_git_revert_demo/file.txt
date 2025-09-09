@@ -1,2 +1,6 @@
 Line 1
 Line 2
+
+What did you notice about the file and commit history after revert?
+
+i realize that when reverting the commits
