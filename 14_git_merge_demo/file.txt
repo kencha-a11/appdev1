@@ -1,0 +1,4 @@
+Realization: What did you notice about the commit history after merge?
+
+i realize that when you use the git merge feature it state that this feature will merge to main
+any changes in the feature branch will pull from the main
