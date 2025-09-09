@@ -1,0 +1,5 @@
+Realization: What did you notice about the commit history after switching from macro to micro commits?
+
+i realize that it is more clean and readable when doing micro commits rather than macro
+the reason is that to have clear and concise to track the progress what have done in history
+aside from it to maintain the maintainability of project work and collaboration to other developer
