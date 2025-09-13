@@ -29,7 +29,22 @@ function Profile() {
   );
 }
 
+function Navigation() {
+  return <h1>Navigation Component</h1>;
+}
 
+function Footer() {
+  return <h1>Footer Component</h1>;
+}
+
+
+let content;
+
+if (true) {
+  content = <Navigation />;
+} else {
+  content = <Footer />;
+}
 
 function App() {
 
@@ -38,6 +53,7 @@ function App() {
       <h1 style={{ color: 'blue' }}>App Component</h1>
       <MyButton />
       <Profile />
+      {content}
     </>
   )
 }
