@@ -1,4 +1,5 @@
 import './App.css'
+import { useState } from 'react'
 
 const user = {
   name: 'Hedy Lamarr',
@@ -13,8 +14,12 @@ const products = [
 ];
 
 function MyButton() {
+  const [count, setCount] = useState(0)
+  function handleClick() {
+    setCount(count + 1)
+  }
   return (
-    <button className='red-btn'>I'm a button</button>
+    <button className='red-btn' onClick={handleClick}>Click Me {count}</button>
   );
 }
 
