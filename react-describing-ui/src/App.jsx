@@ -4,7 +4,12 @@ import Profile from "./components/Profile"
 import PackingList from "./components/PackagingList"
 import List from "./components/List"
 import TeaSet from "./components/TeaSet"
+import RootComponent from "./components/tree/RootComponent"
+import { rootGreet } from "./module/RootModule"
+
+
 function App() {
+  const greet = rootGreet()
 
   return (
     <>
@@ -13,8 +18,9 @@ function App() {
       {/* <Profile /> */}
       {/* <PackingList /> */}
       {/* <List /> */}
-      <TeaSet />
-      
+      {/* <TeaSet /> */}
+      <RootComponent />
+      <p>{greet}</p>
     </>
   )
 }
