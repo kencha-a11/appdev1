@@ -1,9 +1,20 @@
+import { getImageUrl } from "../utils/utils";
+import Card from "./Card";
+import Avatar from "./Avatar";
+
+
 function Profile() {
   return (
-    <img
-      src="https://i.imgur.com/MK3eW3As.jpg"
-      alt="Katherine Johnson"
-    />
+    <Card>
+      <Avatar
+        size={100}
+        person={{
+          name: 'Katsuko Saruhashi',
+          imageId: 'YfeOqp2'
+        }}
+      />
+    </Card>
+
   );
 }
 
