@@ -1,11 +1,15 @@
+import PageLayout from "../Layouts/PageLayout"
 import Gallery from "../components/Gallery"
 // Define component outside page layout
 
-
+// Using the component
 function App() {
   return (
     <>
-      <Gallery />
+      <PageLayout>
+        <Article />
+        <Gallery />
+      </PageLayout>
     </>
   )
 }
@@ -37,12 +41,12 @@ function Article() {
 |
 | Parenthesis in return () used to return parent object
 | Reason to avoid the JS ASCI 
-*/ 
+*/
 
 
 /* ----------------- Using Component ------------------
 | Browser see element by lowercasing ex. <section>
 | but with <Section> react know when to use component
 | Defining component inside the component is not practices
-|
+| Nesting a component is considered best practices & standards
 */

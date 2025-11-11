@@ -1,6 +1,6 @@
 import React from 'react'
 
-// --- Nested Components ---
+// --- Nesting Components ---
 
 // Define Layouts with nesting component
 export default function PageLayout({ children }) {

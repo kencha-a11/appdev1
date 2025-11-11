@@ -1,5 +1,7 @@
 import React from 'react'
 
+// --- Nesting Components ---
+
 // Defining gallery component
 export default function Gallery() {
     return (
@@ -14,11 +16,14 @@ export default function Gallery() {
 
 // Define profile component inside this Gallery.jsx file
 function Profile() {
+    const url = "https://i.imgur.com/MK3eW3Am.jpg"
+    const alt = "Katherine Johnson"
+
     return (
         <div>
             <img
-                src="https://i.imgur.com/MK3eW3Am.jpg"
-                alt="Katherine Johnson"
+                src={url}
+                alt={alt}
             />
         </div>
     )
