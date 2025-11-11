@@ -1,7 +1,7 @@
 import React from 'react'
 
 // Export default for gallery component
-export default function Gallery() {
+export default function Gallery() { // <--- Defining default export
     return (
         <section>
             <h1>Amazing scientists</h1>
@@ -21,3 +21,9 @@ function Profile() {
     />
   );
 }
+
+/**
+ * Take note: 
+ * A JSX file can only contain atleast one Default export
+ * but can have multiple Name exports
+ */
