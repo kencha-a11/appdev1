@@ -13,7 +13,7 @@ export default function Gallery() { // <--- Defining default export
 }
 
 // Export name for profile
-function Profile() {
+export function Profile() { // <--- Defining name export (placing export in the beginning)
   return (
     <img
       src="https://i.imgur.com/MK3eW3As.jpg"

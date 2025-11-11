@@ -1,12 +1,15 @@
 // Imported component gallery
-import Gallery from "./components/Gallery" // <--- Export default component
+import Gallery from "./components/Gallery" // <--- Default export component
+import { Profile } from "./components/Gallery" // <--- Name export component notice { name export here }
+
 
 // Root component file will be App.jsx 
 function App() {
 
   return (
     <>
-      <Gallery />
+      <Gallery /> {/* <--- Default export */}
+      <Profile /> {/* <--- Name export */}
     </>
   )
 }
@@ -40,3 +43,8 @@ export default App
  * but it can have as many named exports as you like
  */
 
+/**
+ * Exporting and Importing multiple components from same file
+ * Take note: only the syntax is change when defining the exports
+ * and importing syntax with {} curly braces
+ */
