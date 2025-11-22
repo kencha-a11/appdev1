@@ -7,6 +7,7 @@ function App() {
   return (
     <>
       <Avatar />
+      <TodoList />
     </>
   )
 }
@@ -14,3 +15,14 @@ function App() {
 export default App
 
 
+function TodoList() {
+  const name = "Gregorio Y. Zara";
+  return(
+    <h1>{name}'s To Do List</h1>
+  )
+}
+
+//** Using curly braces: A window into the JavaScript world
+//  by just curly braces there is a world to discover 
+// technically you can insert expression and arithmetics, calculation or funciton calls
+// */
