@@ -1,30 +1,32 @@
-export const getTodosAPI = function () {
+export const getTodosAPI = () => {
     return fetch(`https://jsonplaceholder.typicode.com/todos?_limit=10`)
-    .then(res => res.json())
+        .then(res => res.json())
 }
 
-
-export const addTodoAPI = function (todo) {
+export const addTodoAPI = (todo) => {
     return fetch(`https://jsonplaceholder.typicode.com/todos`, {
         method: "POST",
         body: JSON.stringify(todo),
         headers: { "Content-Type": "application/json" }
-    })
-    .then(res => res.json())
+    }).then(res => res.json())
 }
 
-export const updateTodoAPI = function(todo) {
+export const updateTodoAPI = (todo) => {
+    // JSONPlaceholder only supports IDs 1–200
+    if (todo.id > 200) {
+        // skip API call, just return the todo for local state update
+        return Promise.resolve(todo)
+    }
+    
     return fetch(`https://jsonplaceholder.typicode.com/todos/${todo.id}`, {
         method: "PUT",
         body: JSON.stringify(todo),
         headers: { "Content-Type": "application/json" }
-    })
-    .then(res => res.json())
+    }).then(res => res.json())
 }
 
-export const deleteTodoAPI = function(id) {
+export const deleteTodoAPI = (id) => {
     return fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
         method: "DELETE"
-    })
-    .then(() => id)
+    }).then(() => id)
 }

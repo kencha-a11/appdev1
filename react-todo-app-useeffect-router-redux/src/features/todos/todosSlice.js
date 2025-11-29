@@ -1,22 +1,30 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import { getTodosAPI, addTodoAPI, updateTodoAPI, deleteTodoAPI } from "./todosAPI.js"
 
+// Async thunks
 export const fetchTodos = createAsyncThunk("todos/fetchTodos", async () => {
     return await getTodosAPI()
 })
 
+// todosSlice.js
 export const addTodo = createAsyncThunk("todos/addTodo", async (title) => {
-  const newTodo = { userId: 1, title, completed: false };
-  return await addTodoAPI(newTodo);
-});
+    const newTodo = { 
+        id: Date.now(),   // <-- unique local ID
+        userId: 1, 
+        title, 
+        completed: false 
+    }
+    return newTodo
+})
+
 
 export const updateTodo = createAsyncThunk("todos/updateTodo", async (todo) => {
-  return await updateTodoAPI(todo);
-});
+    return await updateTodoAPI(todo)
+})
 
 export const deleteTodo = createAsyncThunk("todos/deleteTodo", async (id) => {
-  return await deleteTodoAPI(id);
-});
+    return await deleteTodoAPI(id)
+})
 
 const todosSlice = createSlice({
     name: "todos",
@@ -31,14 +39,15 @@ const todosSlice = createSlice({
             state.items.unshift(action.payload)
         })
         .addCase(updateTodo.fulfilled, (state, action) => {
-            const updated = action.payload;
-            const index = state.items.findIndex((item) => item.id === updated.id);
-            if (index !== -1) state.items[index] = updated;
+            const updated = action.payload
+            const index = state.items.findIndex(item => item.id === updated.id)
+            if (index !== -1) state.items[index] = updated
         })
         .addCase(deleteTodo.fulfilled, (state, action) => {
-            state.items = state.items.filter((item) => item.id !== action.payload);
+            state.items = state.items.filter(item => item.id !== action.payload)
         })
     }
 })
+
 
 export default todosSlice.reducer
