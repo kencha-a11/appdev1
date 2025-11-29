@@ -1,36 +1,44 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
+import { getTodosAPI, addTodoAPI, updateTodoAPI, deleteTodoAPI } from "./todosAPI.js"
 
-// Async thunk example
-export const fetchTodos = createAsyncThunk(
-  "todos/fetchTodos",
-  async () => {
-    const response = await fetch("https://jsonplaceholder.typicode.com/todos?_limit=5");
-    const data = await response.json();
-    return data;
-  }
-);
+export const fetchTodos = createAsyncThunk("todos/fetchTodos", async () => {
+    return await getTodosAPI()
+})
 
-const initialState = { items: [], status: 'idle' };
-
-const todosSlice = createSlice({
-  name: "todos",
-  initialState,
-  reducers: {
-    addTodo: (state, action) => { state.items.push(action.payload) },
-    removeTodo: (state, action) => {
-      state.items = state.items.filter(todo => todo.id !== action.payload)
-    }
-  },
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchTodos.pending, (state) => { state.status = 'loading' })
-      .addCase(fetchTodos.fulfilled, (state, action) => {
-        state.items = action.payload;
-        state.status = 'succeeded';
-      })
-      .addCase(fetchTodos.rejected, (state) => { state.status = 'failed' });
-  }
+export const addTodo = createAsyncThunk("todos/addTodo", async (title) => {
+  const newTodo = { userId: 1, title, completed: false };
+  return await addTodoAPI(newTodo);
 });
 
-export const { addTodo, removeTodo } = todosSlice.actions;
-export default todosSlice.reducer;
+export const updateTodo = createAsyncThunk("todos/updateTodo", async (todo) => {
+  return await updateTodoAPI(todo);
+});
+
+export const deleteTodo = createAsyncThunk("todos/deleteTodo", async (id) => {
+  return await deleteTodoAPI(id);
+});
+
+const todosSlice = createSlice({
+    name: "todos",
+    initialState: { items: [] },
+    reducers: {},
+    extraReducers: builder => {
+        builder
+        .addCase(fetchTodos.fulfilled, (state, action) => {
+            state.items = action.payload
+        })
+        .addCase(addTodo.fulfilled, (state, action) => {
+            state.items.unshift(action.payload)
+        })
+        .addCase(updateTodo.fulfilled, (state, action) => {
+            const updated = action.payload;
+            const index = state.items.findIndex((item) => item.id === updated.id);
+            if (index !== -1) state.items[index] = updated;
+        })
+        .addCase(deleteTodo.fulfilled, (state, action) => {
+            state.items = state.items.filter((item) => item.id !== action.payload);
+        })
+    }
+})
+
+export default todosSlice.reducer
