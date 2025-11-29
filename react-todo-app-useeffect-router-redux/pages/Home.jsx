@@ -1,9 +1,12 @@
 import React from 'react'
 
-export default function Home() {
+export default function Home () {
   return (
     <div>
-      Home Page
+      <h1>Welcome to the Todo App</h1>
+      <a href="/login">Go to Login</a>
     </div>
   )
 }
+
+
