@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 
 function Login() {
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
+    const [username, setUsername] = useState("Bret")
+    const [password, setPassword] = useState("SECRET123")
     const [users, setUsers] = useState([])
 
     const SECRET = import.meta.env.VITE_APP_SECRET_PASSWORD
+
     useEffect(() => {
         fetch("https://jsonplaceholder.typicode.com/users?_limit=2")
             .then(response => response.json())
