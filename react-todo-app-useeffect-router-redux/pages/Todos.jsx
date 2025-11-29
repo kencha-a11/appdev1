@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function todosSlicer() {
+export default function Todos() {
   return (
     <div>
-      
+      Todos Page
     </div>
   )
 }
